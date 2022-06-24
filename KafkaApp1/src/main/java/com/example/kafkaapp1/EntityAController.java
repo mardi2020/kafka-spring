@@ -11,11 +11,17 @@ public class EntityAController {
 
     private final EntityAKafkaProducer producer;
 
-    @PostMapping
-    public String sendMessage(@RequestParam("message") String message) {
-        producer.sendMessage(message);
+    @PostMapping(value="/name")
+    public String sendNameMessage(@RequestParam("message") String message) {
+        producer.sendNameMessage(message);
 
         return "OK";
     }
 
+    @PostMapping(value="/content")
+    public String sendContentMessage(@RequestParam("message") String message) {
+        producer.sendContentMessage(message);
+
+        return "OK";
+    }
 }

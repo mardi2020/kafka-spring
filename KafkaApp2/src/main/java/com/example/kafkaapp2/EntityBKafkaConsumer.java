@@ -8,8 +8,13 @@ import java.io.IOException;
 @Service
 public class EntityBKafkaConsumer {
 
-    @KafkaListener(topics = "entityA", groupId = "entityA")
-    public void consume(String message) throws IOException {
-        System.out.println("Consumed message: " + message);
+    @KafkaListener(topics = "name", groupId = "entityA")
+    public void consumeName(String message) throws IOException {
+        System.out.println("[name] Consumed message: " + message);
+    }
+
+    @KafkaListener(topics = "content", groupId = "entityA")
+    public void consumeContent(String message) throws IOException {
+        System.out.println("[content] Consumed message = " + message);
     }
 }

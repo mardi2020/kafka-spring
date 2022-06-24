@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EntityAKafkaProducer {
 
-    private static final String TOPIC = "entityA";
-
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String message) {
+    public void sendNameMessage(String message) {
         System.out.println("[메시지 발행]: " + message);
-        kafkaTemplate.send(TOPIC, message);
+        kafkaTemplate.send("name", message);
+    }
+
+    public void sendContentMessage(String message) {
+        System.out.println("[메시지 발행]: " + message);
+        kafkaTemplate.send("content", message);
     }
 }
